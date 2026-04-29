@@ -7,25 +7,158 @@
 
   <link rel="stylesheet" href="styles.css" />
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
 </head>
 
 <body>
   <header class="topbar">
-    <a href="index.html">단행본 체크리스트로 이동하기</a>
+    <a href="index.html">
+      <span class="pc-only" data-ko="단행본 체크리스트로 이동하기" data-en="Go to Book Checklist">단행본 체크리스트로 이동하기</span>
+      <span class="mobile-only" data-ko="단행본" data-en="Book">단행본</span>
+    </a>
 
     <div class="topbar-right">
-    <button id="langToggle">EN</button>
-    <button id="darkToggle">Dark</button>
+      <button id="langToggle">EN</button>
+      <button id="darkToggle">Dark</button>
 
-    <button id="exportImage">
-        <span class="pc-only">JPG로 내보내기</span>
-        <span class="mobile-only">JPG</span>
-    </button>
+      <button id="exportImage">
+        <span class="pc-only" data-ko="JPG로 내보내기" data-en="Export as JPG">JPG로 내보내기</span>
+        <span class="mobile-only" data-ko="JPG" data-en="JPG">JPG</span>
+      </button>
 
-    <button id="exportPDF">
-        <span class="pc-only">PDF로 내보내기</span>
+      <button id="exportPDF">
+        <span class="pc-only" data-ko="PDF로 내보내기" data-en="Export as PDF">PDF로 내보내기</span>
+        <span class="mobile-only" data-ko="PDF" data-en="PDF">PDF</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="page" id="captureArea">
+    <header class="page-header">
+      <h1 data-ko="출력 과제용 체크리스트" data-en="Print Assignment Checklist">출력 과제용 체크리스트</h1>
+      <p data-ko="오늘도 무사고 하십쇼!" data-en="May every print come out safely.">
+        오늘도 무사고 하십쇼!
+      </p>
+    </header>
+
+    <div class="info-grid">
+      <input data-ko-placeholder="과제명" data-en-placeholder="Assignment Title" placeholder="과제명" />
+      <input data-ko-placeholder="수업명" data-en-placeholder="Class" placeholder="수업명" />
+      <input data-ko-placeholder="제출일" data-en-placeholder="Due Date" placeholder="제출일" />
+      <input data-ko-placeholder="인쇄소" data-en-placeholder="Print Shop" placeholder="인쇄소" />
+      <input data-ko-placeholder="파일명" data-en-placeholder="File Name" placeholder="파일명" />
+      <input data-ko-placeholder="인쇄 방식" data-en-placeholder="Print Method" placeholder="인쇄 방식" />
+    </div>
+
+    <section class="section">
+      <div class="section-title">
+        <h2 data-ko="1. 파일 출력 전 확인" data-en="1. Pre-Print File Check">1. 파일 출력 전 확인</h2>
+      </div>
+
+      <div class="check-box">
+        <label><input type="checkbox" /> <span data-ko="최종 파일이 맞나요?" data-en="Is this the final file?">최종 파일이 맞나요?</span></label>
+        <label><input type="checkbox" /> <span data-ko="파일명을 제출 규칙에 맞게 저장했나요?" data-en="Did you name the file according to the submission rules?">파일명을 제출 규칙에 맞게 저장했나요?</span></label>
+        <label><input type="checkbox" /> <span data-ko="PDF로 저장했나요?" data-en="Did you save it as a PDF?">PDF로 저장했나요?</span></label>
+        <label><input type="checkbox" /> <span data-ko="원본 파일을 따로 백업했나요?" data-en="Did you back up the original file separately?">원본 파일을 따로 백업했나요?</span></label>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">
+        <h2 data-ko="2. 판형 / 여백 확인" data-en="2. Size / Margin Check">2. 판형 / 여백 확인</h2>
+      </div>
+
+      <div class="check-box">
+        <label><input type="checkbox" /> <span data-ko="작업 사이즈가 제출 조건과 맞나요?" data-en="Does the document size match the submission requirements?">작업 사이즈가 제출 조건과 맞나요?</span></label>
+        <label><input type="checkbox" /> <span data-ko="재단선이나 여백이 충분한가요?" data-en="Are the crop marks or margins sufficient?">재단선이나 여백이 충분한가요?</span></label>
+        <label><input type="checkbox" /> <span data-ko="중요한 글자나 이미지가 가장자리에 너무 붙어 있지 않나요?" data-en="Are important text or images not too close to the edge?">중요한 글자나 이미지가 가장자리에 너무 붙어 있지 않나요?</span></label>
+        <label><input type="checkbox" /> <span data-ko="양면 출력인 경우 앞뒤 정렬을 확인했나요?" data-en="For double-sided printing, did you check front and back alignment?">양면 출력인 경우 앞뒤 정렬을 확인했나요?</span></label>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">
+        <h2 data-ko="3. 이미지 / 글자 확인" data-en="3. Image / Text Check">3. 이미지 / 글자 확인</h2>
+      </div>
+
+      <div class="check-box">
+        <label><input type="checkbox" /> <span data-ko="이미지가 깨지거나 흐리지 않나요?" data-en="Are the images not broken or blurry?">이미지가 깨지거나 흐리지 않나요?</span></label>
+        <label><input type="checkbox" /> <span data-ko="글자가 밀리거나 잘리지 않나요?" data-en="Is any text shifted or cropped?">글자가 밀리거나 잘리지 않나요?</span></label>
+        <label><input type="checkbox" /> <span data-ko="폰트가 깨지지 않도록 PDF를 확인했나요?" data-en="Did you check the PDF to prevent font errors?">폰트가 깨지지 않도록 PDF를 확인했나요?</span></label>
+        <label><input type="checkbox" /> <span data-ko="맞춤법과 오탈자를 마지막으로 확인했나요?" data-en="Did you do a final spelling and typo check?">맞춤법과 오탈자를 마지막으로 확인했나요?</span></label>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">
+        <h2 data-ko="4. 출력 설정 확인" data-en="4. Print Setting Check">4. 출력 설정 확인</h2>
+      </div>
+
+      <div class="check-box">
+        <label><input type="checkbox" /> <span data-ko="컬러 / 흑백 설정이 맞나요?" data-en="Is the color or black-and-white setting correct?">컬러 / 흑백 설정이 맞나요?</span></label>
+        <label><input type="checkbox" /> <span data-ko="단면 / 양면 출력 설정이 맞나요?" data-en="Is the single-sided or double-sided setting correct?">단면 / 양면 출력 설정이 맞나요?</span></label>
+        <label><input type="checkbox" /> <span data-ko="용지 종류와 두께를 확인했나요?" data-en="Did you check the paper type and thickness?">용지 종류와 두께를 확인했나요?</span></label>
+        <label><input type="checkbox" /> <span data-ko="실제 크기 / 맞춤 인쇄 설정을 확인했나요?" data-en="Did you check actual-size or fit-to-page settings?">실제 크기 / 맞춤 인쇄 설정을 확인했나요?</span></label>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">
+        <h2 data-ko="5. 출력 후 확인" data-en="5. After-Print Check">5. 출력 후 확인</h2>
+      </div>
+
+      <div class="check-box">
+        <label><input type="checkbox" /> <span data-ko="페이지 순서가 맞나요?" data-en="Are the pages in the correct order?">페이지 순서가 맞나요?</span></label>
+        <label><input type="checkbox" /> <span data-ko="잘리거나 누락된 부분이 없나요?" data-en="Is there anything cropped or missing?">잘리거나 누락된 부분이 없나요?</span></label>
+        <label><input type="checkbox" /> <span data-ko="색이 너무 어둡거나 흐리지 않나요?" data-en="Are the colors not too dark or faded?">색이 너무 어둡거나 흐리지 않나요?</span></label>
+        <label><input type="checkbox" /> <span data-ko="제본이나 접지 상태를 확인했나요?" data-en="Did you check the binding or folding condition?">제본이나 접지 상태를 확인했나요?</span></label>
+      </div>
+    </section>
+
+    <section class="final-memo">
+      <h2 data-ko="메모" data-en="Memo">메모</h2>
+      <textarea
+        data-ko-placeholder="전체 메모를 입력하세요."
+        data-en-placeholder="Enter overall notes."
+        placeholder="전체 메모를 입력하세요."></textarea>
+    </section>
+
+    <section class="final-memo">
+      <h2 data-ko="이미지 첨부" data-en="Image Upload">이미지 첨부</h2>
+
+      <div class="upload">
+        <label class="file-box">
+          <span data-ko="파일 선택" data-en="Choose File">파일 선택</span>
+          <input type="file" class="imageInput" accept="image/*" />
+        </label>
+
+        <img class="preview" alt="" />
+      </div>
+    </section>
+
+    <div class="final-check-line">
+      <div class="final-field">
+        <span data-ko="최종확인자" data-en="Final Checker">최종확인자</span>
+        <input />
+      </div>
+
+      <div class="final-field">
+        <span data-ko="작성일" data-en="Date">작성일</span>
+        <input />
+      </div>
+    </div>
+
+    <div class="credit">
+      Print Assignment Checklist<br>
+      suran75@naver.com & soyonganniekim@gmail.com, 2026
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>        <span class="pc-only">PDF로 내보내기</span>
         <span class="mobile-only">PDF</span>
     </button>
     </div>
