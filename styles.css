@@ -11,18 +11,18 @@
 }
 
 body.dark {
-  --bg: #111111;
-  --text: #eeeeee;
-  --line: #3b3b3b;
-  --card: #3333330f;
-  --muted: #999999;
+  --bg: #0a0a0a;
+  --text: #f2f2f2;
+  --line: #414141;
+  --card: #1a1a1a;
+  --muted: #888888;
 }
 
 body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
-  font-family: "helvetica", "Noto Sans-Serif KR", sans-serif;
+  font-family: helvetica, sans-serif;
   font-size: 14px;
   line-height: 1.55;
 }
@@ -31,6 +31,8 @@ a {
   color: inherit;
   text-decoration: none;
 }
+
+/* topbar */
 
 .topbar {
   position: fixed;
@@ -54,20 +56,72 @@ a {
 }
 
 button,
-.topbar a {
+.topbar a,
+.file-box {
   background: var(--card);
   color: var(--text);
   border: 1px solid var(--line);
-  padding: 7px 11px;
-  font-family: inherit;
   font-size: 13px;
   cursor: pointer;
 }
 
-button:hover,
-.topbar a:hover {
-  opacity: 0.55;
+.topbar button,
+.topbar a {
+  height: 34px;
+  padding: 0 12px;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
+button:hover,
+.topbar a:hover,
+.file-box:hover {
+  background: #111111;
+  color: #ffffff;
+  border-color: #111111;
+}
+
+button:active,
+.topbar a:active,
+.file-box:active {
+  background: #000000;
+  color: #ffffff;
+}
+
+/* dark mode */
+
+body.dark button:hover,
+body.dark .topbar a:hover,
+body.dark .file-box:hover {
+  background: #ffffff;
+  color: #111111;
+  border-color: #ffffff;
+}
+
+body.dark .page {
+  background: #0e0e0e;
+  border: 1px solid #2a2a2a;
+}
+
+body.dark .upload {
+  background: #1a1a1a;
+}
+
+body.dark .credit {
+  color: #555555;
+}
+
+body.dark .check-box label.checked::before {
+  background: #f2f2f2;
+}
+
+body.dark .check-box label.checked::after {
+  color: #111111;
+}
+
+/* page */
 
 .page {
   width: 900px;
@@ -89,10 +143,13 @@ button:hover,
 }
 
 .page-header p {
-  margin: 8px 0 0;
-  color: var(--muted);
+  margin-top: 6px;
+  margin-bottom: 30px;
   font-size: 13px;
+  color: var(--muted);
 }
+
+/* info */
 
 .info-grid {
   display: grid;
@@ -103,25 +160,23 @@ button:hover,
 }
 
 .info-grid input {
-  width: 100%;
   padding: 11px;
   border: 0;
   border-right: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
   background: var(--bg);
   color: var(--text);
-  font-family: inherit;
   font-size: 14px;
+  font-family: inherit;
 }
+
+/* section */
 
 .section {
   margin-top: 36px;
 }
 
 .section-title {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
   border-bottom: 1px solid var(--line);
   padding-bottom: 8px;
   margin-bottom: 12px;
@@ -132,6 +187,8 @@ h2 {
   font-size: 17px;
   font-weight: 400;
 }
+
+/* checkbox */
 
 .check-box {
   border: 1px solid var(--line);
@@ -148,7 +205,7 @@ h2 {
 }
 
 .check-box label:last-child {
-  border-bottom: 0;
+  border-bottom: none;
 }
 
 .check-box input {
@@ -159,88 +216,95 @@ h2 {
   content: "";
   position: absolute;
   left: 14px;
-  top: 50%;
   width: 16px;
   height: 16px;
-  transform: translateY(-50%);
   border: 1px solid var(--line);
   background: var(--bg);
 }
 
-.check-box input:checked + span::after {
-  content: "✓";
-  position: absolute;
-  left: 18px;
-  top: 50%;
-  transform: translateY(-56%);
-  font-size: 17px;
-  line-height: 1;
-  color: var(--text);
+.check-box label.checked::before {
+  background: #111111;
 }
 
-.check-box label.checked {
-  opacity: 0.45;
-  text-decoration: line-through;
+.check-box label.checked::after {
+  content: "✓";
+  position: absolute;
+  left: 19px;
+  top: 51%;
+  transform: translateY(-50%);
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: bold;
 }
+
+/* memo */
 
 .final-memo {
   margin-top: 44px;
-  padding-top: 18px;
-  border-top: 1px solid var(--line);
+}
+
+.final-memo h2 {
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 8px;
+  margin-bottom: 12px;
+  font-size: 17px;
+  font-weight: 400;
 }
 
 .final-memo textarea {
   width: 100%;
   min-height: 140px;
-  margin-top: 12px;
   padding: 12px;
   border: 1px solid var(--line);
   background: var(--bg);
   color: var(--text);
-  font-family: inherit;
-  font-size: 13px;
   resize: vertical;
+  font-family: inherit;
 }
+
+/* upload */
 
 .upload {
   margin-top: 10px;
-  padding: 12px;
-  border: 1px solid var(--line);
+  margin-bottom: 40px;
 }
 
-.upload-title {
-  font-size: 12px;
+.upload.has-file .file-box,
+.upload.has-file .file-name {
+  display: none;
+}
+
+.file-box {
+  display: inline-block;
+  padding: 7px 11px;
+}
+
+.file-box input {
+  display: none;
+}
+
+.file-name {
+  margin-left: 10px;
+  font-size: 13px;
   color: var(--muted);
-  margin-bottom: 6px;
-}
-
-input[type="file"] {
-  color: var(--text);
-  font-family: inherit;
 }
 
 .preview {
-  display: none;
-  max-width: 260px;
-  max-height: 220px;
-  margin-top: 10px;
-  border: 1px solid var(--line);
-  object-fit: contain;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
-.credit {
-  margin-top: 70px;
-  margin-bottom: -10px;
-  padding-top: 18px;
-  text-align: left;
-  font-size: 12px;
-  line-height: 1.5;
-  color: #bdbdbd;
+.preview[src=""] {
+  display: none;
 }
+
+/* final check */
 
 .final-check-line {
-  margin-top: 36px;
-  padding-top: 18px;
+  margin-top: 100px;
+  padding-top: 50px;
   border-top: 1px solid var(--line);
   display: flex;
   justify-content: flex-end;
@@ -248,84 +312,39 @@ input[type="file"] {
 }
 
 .final-field {
-  margin-top: 20px;
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
 .final-field span {
-  margin-bottom: 1px;
-  color: var(--text);
-  font-size: 14px;
   white-space: nowrap;
+  font-size: 15px;
 }
 
 .final-field input {
+  margin-top: 1px;
   width: 150px;
   border: 0;
   border-bottom: 1px solid var(--line);
   background: transparent;
   color: var(--text);
-  font-family: inherit;
-  font-size: 14px;
   outline: none;
+  font-size: 15px;
 }
 
-body.exporting-pdf .page {
-  border: none;
+/* credit */
+
+.credit {
+  margin-top: 70px;
+  margin-bottom: -4px;
+  font-size: 12px;
+  line-height: 1.45;
+  color: #bdbdbd;
 }
 
-@media print {
-  .topbar {
-    display: none;
-  }
+/* text toggle */
 
-  .page {
-    margin: 0;
-    width: 100%;
-    border: none;
-  }
-}
-
-@media (max-width: 960px) {
-  .topbar {
-    height: auto;
-    padding: 10px 14px;
-    align-items: flex-start;
-    gap: 10px;
-    flex-direction: column;
-  }
-
-  .topbar-right {
-    flex-wrap: wrap;
-  }
-
-  .page {
-    width: calc(100% - 28px);
-    margin-top: 130px;
-    padding: 24px;
-  }
-
-  .info-grid {
-    align-items: right;
-  }
-
-  .page-header h1 {
-    font-size: 23px;
-  }
-
-  .section-title {
-    display: block;
-  }
-
-  .date-input {
-    margin-top: 8px;
-    width: 100%;
-  }
-}
-
-/* ===== 모바일 버튼 텍스트 전환 ===== */
 .mobile-only {
   display: none;
 }
@@ -334,9 +353,28 @@ body.exporting-pdf .page {
   display: inline;
 }
 
-/* ===== 모바일 UI 전체 최적화 ===== */
-@media (max-width: 768px) {
+/* tablet */
 
+@media (max-width: 960px) {
+  .topbar {
+    height: auto;
+    padding: 10px 14px;
+  }
+
+  .topbar-right {
+    overflow-x: auto;
+  }
+
+  .page {
+    width: calc(100% - 24px);
+    margin: 80px auto;
+    padding: 20px;
+  }
+}
+
+/* mobile */
+
+@media (max-width: 768px) {
   .pc-only {
     display: none;
   }
@@ -345,50 +383,168 @@ body.exporting-pdf .page {
     display: inline;
   }
 
-  .topbar {
-    height: 52px;
-    padding: 8px 10px;
+  body {
+    font-size: 13px;
   }
 
-  .topbar-right button,
+  .topbar {
+    padding: 10px 12px;
+  }
+
+  .topbar button,
   .topbar a {
-    padding: 6px 8px;
-    font-size: 12px;
+    height: 30px;
+    padding: 0 10px;
+    font-size: 11px;
+    flex-shrink: 0;
+  }
+
+  .topbar-right {
+    gap: 6px;
   }
 
   .page {
     width: 100%;
-    margin: 80px 0 40px;
+    margin: 70px 0 40px;
     padding: 16px;
-    border-left: none;
-    border-right: none;
+    border: none;
   }
 
   .page-header h1 {
-    font-size: 20px;
+    font-size: 16px;
+    line-height: 1.3;
+  }
+
+  .page-header p {
+    font-size: 12px;
   }
 
   .info-grid {
     grid-template-columns: 1fr;
   }
 
-  .info-grid input {
-    font-size: 13px;
-    padding: 10px;
+  h2,
+  .final-memo h2,
+  .final-field span {
+    font-size: 15px;
+    line-height: 1.3;
   }
 
-  .check-box label {
-    padding: 12px 12px 12px 42px;
-    font-size: 13px;
+  .upload {
+    border: 1px solid var(--line);
+    background: #f4f4f4;
+    padding: 18px 14px 14px;
+    text-align: center;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-bottom: 40px;
+  }
+
+  .file-box {
+    width: 100%;
+    display: block;
+    border: none;
+    background: transparent;
+    padding: 0;
+  }
+
+  .file-box span {
+    color: #777777;
+  }
+
+  .upload:hover {
+    background: #111111;
+    border-color: #111111;
+  }
+
+  .upload:hover span {
+    color: #ffffff;
+  }
+
+  .file-box:hover {
+    background: transparent;
+    color: inherit;
+    border-color: transparent;
+  }
+
+  .file-name {
+    display: block;
+    margin: 8px 0 0;
+    text-align: center;
+  }
+
+  .preview {
+    margin-top: 6px;
   }
 
   .final-check-line {
+    margin-top: 44px;
+    padding-top: 0;
+    border-top: none;
+    display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    gap: 14px;
+    gap: 36px;
+  }
+
+  .final-field {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .final-field span {
+    display: block;
+    width: 100%;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--line);
+    text-align: left;
+    white-space: nowrap;
   }
 
   .final-field input {
     width: 100%;
+    height: 54px;
+    padding: 12px;
+    border: 1px solid var(--line);
+    background: var(--bg);
+    color: var(--text);
+    font-size: 16px;
   }
+
+  body.dark .final-field input {
+    border: 1px solid #ffffff5c;
+  }
+
+  .credit {
+    margin-top: 150px;
+    font-size: 10px;
+    color: #d9d9d9;
+    line-height: 1.4;
+  }
+
+  body.dark .credit {
+    color: #555555;
+  }
+}
+
+/* print */
+
+@media print {
+  .page {
+    width: 100%;
+    margin: 0;
+    border: none;
+  }
+}
+
+/* pdf */
+
+.pdf-mode {
+  width: 210mm !important;
+  max-width: 210mm !important;
+  margin: 0 !important;
+  padding: 12mm !important;
+  border: none !important;
 }
