@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>단행본 체크리스트</title>
+  <title>단행본 사고방지 체크리스트</title>
 
-  <link rel="stylesheet" href="styles.css?v=4" />
+  <link rel="stylesheet" href="styles.css" />
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
@@ -164,17 +164,18 @@
     </section>
 
     <section class="final-memo">
-      <h2 data-ko="이미지 첨부" data-en="Image Upload">이미지 첨부</h2>
+  <h2 data-ko="이미지 첨부" data-en="Image Upload">이미지 첨부</h2>
 
-      <div class="upload">
-        <label class="file-box">
-          <span data-ko="파일 선택" data-en="Choose File">파일 선택</span>
-          <input type="file" class="imageInput" accept="image/*" />
-        </label>
+  <div class="upload">
+    <label class="file-box">
+      <span data-ko="파일 선택" data-en="Choose File">파일 선택</span>
+      <input type="file" class="imageInput" accept="image/*" />
+    </label>
 
-        <img class="preview" alt="" />
-      </div>
-    </section>
+    <img class="preview" alt="" />
+    <button type="button" class="remove-file">삭제</button>
+  </div>
+</section>
 
     <div class="final-check-line">
       <div class="final-field">
