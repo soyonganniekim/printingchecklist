@@ -77,20 +77,25 @@ document.querySelectorAll(".upload").forEach(upload => {
 /* export JPG */
 const exportImageBtn = document.getElementById("exportImage");
 
-exportImageBtn.addEventListener("click", () => {
-  const area = document.getElementById("captureArea");
+if (exportImageBtn) {
+  exportImageBtn.addEventListener("click", () => {
+    const area = document.getElementById("captureArea");
 
-  html2canvas(area, {
-    scale: 2,
-    useCORS: true,
-    backgroundColor: document.body.classList.contains("dark") ? "#0a0a0a" : "#ffffff"
-  }).then(canvas => {
-    const link = document.createElement("a");
-    link.download = "checklist.jpg";
-    link.href = canvas.toDataURL("image/jpeg", 1.0);
-    link.click();
+    html2canvas(area, {
+      scale: 8,
+      useCORS: true,
+      backgroundColor: "#ffffff"
+    }).then(canvas => {
+      const link = document.createElement("a");
+      link.download = "checklist.jpg";
+
+      // ⭐ 화질 유지
+      link.href = canvas.toDataURL("image/jpeg", 1.0);
+
+      link.click();
+    });
   });
-});
+}
 
 /* export PDF */
 const exportPDFBtn = document.getElementById("exportPDF");
