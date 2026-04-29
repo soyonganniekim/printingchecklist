@@ -571,6 +571,16 @@ body.dark .remove-file:hover {
   .final-field input {
     border-radius: 0 !important;
   }
+
+  .info-grid,
+  .info-grid input {
+    border-radius: 0 !important;
+  }
+
+  .info-grid input {
+    -webkit-appearance: none;
+    appearance: none;
+  }
 }
 
 /* print */
