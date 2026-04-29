@@ -127,47 +127,41 @@
 
     <!-- memo -->
     <section class="final-memo">
-      <h2>메모</h2>
-      <textarea placeholder="전체 메모를 입력하세요."></textarea>
+      <h2 data-ko="메모" data-en="Memo">메모</h2>
+      <textarea 
+        data-ko-placeholder="전체 메모를 입력하세요."
+        data-en-placeholder="Enter overall notes."
+        placeholder="전체 메모를 입력하세요."></textarea>
     </section>
 
-    <!-- upload -->
     <section class="final-memo">
-      <h2>이미지 첨부</h2>
+  <h2 data-ko="이미지 첨부" data-en="Image Upload">이미지 첨부</h2>
 
-      <div class="upload">
+  <div class="upload">
+    <label class="file-box">
+      <span data-ko="파일 선택" data-en="Choose File">파일 선택</span>
+      <input type="file" class="imageInput" accept="image/*" />
+    </label>
 
-        <!-- 파일 선택 -->
-        <label class="file-box">
-          <span>파일 선택</span>
-          <input type="file" class="imageInput" accept="image/*" />
-        </label>
+    <img class="preview" alt="" />
+    <button type="button" class="remove-file">삭제</button>
+  </div>
+</section>
 
-        <!-- 이미지 미리보기 -->
-        <img class="preview" alt="" />
-
-        <!-- 삭제 버튼 -->
-        <button type="button" class="remove-file">삭제</button>
-
-      </div>
-    </section>
-
-    <!-- final -->
     <div class="final-check-line">
       <div class="final-field">
-        <span>최종확인자</span>
+        <span data-ko="최종확인자" data-en="Final Checker">최종확인자</span>
         <input />
       </div>
 
       <div class="final-field">
-        <span>작성일</span>
+        <span data-ko="작성일" data-en="Date">작성일</span>
         <input />
       </div>
     </div>
 
-    <!-- credit -->
     <div class="credit">
-      Print Assignment Checklist<br>
+      Book Printing Error Prevention Checklist<br>
       suran75@naver.com & soyonganniekim@gmail.com, 2026
     </div>
 
