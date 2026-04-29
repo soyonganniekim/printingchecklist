@@ -15,12 +15,20 @@
   <header class="topbar">
     <a href="assignment.html">과제용 체크리스트로 이동하기</a>
 
-    <div class="topbar-right">
-      <button id="langToggle">EN</button>
-      <button id="darkToggle">Dark</button>
-      <button id="exportImage">JPG로 내보내기</button>
-      <button id="exportPDF">PDF로 내보내기</button>
-    </div>
+  <div class="topbar-right">
+    <button id="langToggle">EN</button>
+    <button id="darkToggle">Dark</button>
+
+    <button id="exportImage">
+      <span class="pc-only">JPG로 내보내기</span>
+      <span class="mobile-only">JPG</span>
+    </button>
+
+    <button id="exportPDF">
+      <span class="pc-only">PDF로 내보내기</span>
+      <span class="mobile-only">PDF</span>
+    </button>
+  </div>
   </header>
 
   <main class="page" id="captureArea">
