@@ -567,19 +567,18 @@ body.dark .remove-file:hover {
     color: #555555;
   }
 
-  .final-memo textarea,
-  .final-field input {
-    border-radius: 0 !important;
-  }
-
   .info-grid,
-  .info-grid input {
+  .info-grid input,
+  .final-field input,
+  textarea {
     border-radius: 0 !important;
+    -webkit-border-radius: 0 !important;
+    appearance: none !important;
+    -webkit-appearance: none !important;
   }
 
   .info-grid input {
-    -webkit-appearance: none;
-    appearance: none;
+    background-clip: padding-box;
   }
 }
 
