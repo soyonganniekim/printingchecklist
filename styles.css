@@ -527,6 +527,12 @@ h2 {
   body.dark .credit {
     color: #555555;
   }
+
+
+  .final-memo textarea,
+  .final-field input {
+    border-radius: 0 !important;
+  }
 }
 
 /* print */
