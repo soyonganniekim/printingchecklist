@@ -11,11 +11,11 @@
 }
 
 body.dark {
-  --bg: #0a0a0a;
+  --bg: #131313;
   --text: #f2f2f2;
-  --line: #414141;
-  --card: #1a1a1a;
-  --muted: #888888;
+  --line: #4a4a4a;
+  --card: #242424;
+  --muted: #9a9a9a;
 }
 
 body {
@@ -101,7 +101,7 @@ body.dark .file-box:hover {
 }
 
 body.dark .page {
-  background: #0e0e0e;
+  background: #1d1d1d;
   border: 1px solid #2a2a2a;
 }
 
